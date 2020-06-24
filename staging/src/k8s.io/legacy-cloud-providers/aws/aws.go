@@ -187,6 +187,23 @@ const ServiceAnnotationLoadBalancerBEProtocol = "service.beta.kubernetes.io/aws-
 // For example: "Key1=Val1,Key2=Val2,KeyNoVal1=,KeyNoVal2"
 const ServiceAnnotationLoadBalancerAdditionalTags = "service.beta.kubernetes.io/aws-load-balancer-additional-resource-tags"
 
+// ServiceAnnotationLoadBalancerHCProtocol is the annotation used on the service
+// to specify the protocol the load balancer uses when performing health checks.
+// The possible protocols are `tcp` (default), `http`, `https`, or `ssl`.
+// If set to `http` or `https`, a ping path must also be specified through the
+// `ServiceAnnotationLoadBalancerHCProtocol` annotation.
+const ServiceAnnotationLoadBalancerHCProtocol = "service.beta.kubernetes.io/aws-load-balancer-healthcheck-protocol"
+
+// ServiceAnnotationLoadBalancerHCPort is the annotation used on the service
+// to specify the port the load balancer uses when performing health checks.
+// Defaults to the port on which each target receives traffic from the load balancer.
+const ServiceAnnotationLoadBalancerHCPort = "service.beta.kubernetes.io/aws-load-balancer-healthcheck-port"
+
+// ServiceAnnotationLoadBalancerHCPath is the annotation used on the service
+// to specify the ping path that is the destination on the targets for health checks.
+// Defaults to '/'.
+const ServiceAnnotationLoadBalancerHCPath = "service.beta.kubernetes.io/aws-load-balancer-healthcheck-path"
+
 // ServiceAnnotationLoadBalancerHCHealthyThreshold is the annotation used on
 // the service to specify the number of successive successful health checks
 // required for a backend to be considered healthy for traffic.
